@@ -2,7 +2,7 @@
 [] Inicio de Juego
 [X] Dados para empezar
 [X] Tablero
-[X] Logica Jugador Humano
+[X] Logica Jugador Humano.
 [] Logica IA
 
         [X] Aleatoriedad

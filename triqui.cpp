@@ -4,7 +4,7 @@
 using namespace std;
 //Esta libreria cstdlib lo que hace es permitir usar dos funciciones:
 //srand(), que con un parametro como time(0) hace que la semilla sea diferente en cada ejecucion
-//rand() que genera un numero entre 0 y RAND_MAX (32767)
+//rand() que genera un numero entre 0 y RAND_MAX (32767).
 int dado() {
     srand (time(0));
     int num=1+rand()%6;
