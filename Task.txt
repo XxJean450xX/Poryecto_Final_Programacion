@@ -1,16 +1,17 @@
 /*
 [] Inicio de Juego
-[] Dados para empezar
+[X] Dados para empezar
 [X] Tablero
 [X] Logica Jugador Humano
 [] Logica IA
 
-        [] Donde puede jugar
-        [] Jugar aleatoriamente si no hay ninguna de las siguientes posisiones
-        [] Posisiones para evitar ganar el humano
+        [X] Aleatoriedad
+        [X] Jugar aleatoriamente si no hay ninguna de las siguientes posisiones
+       *[] Posisiones para evitar ganar el humano
         [] Posisiones para ganar la IA
         
 [] Interaccion entre IA y HUmano
+[] Limpiar Tablero
 [] Indicar Ganador
 [] Posibilidad de continuar jugando
 */
