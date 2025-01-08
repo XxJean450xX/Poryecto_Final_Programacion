@@ -8,10 +8,19 @@
         [X] Aleatoriedad
         [X] Jugar aleatoriamente si no hay ninguna de las siguientes posisiones
        *[] Posisiones para evitar ganar el humano
-        [] Posisiones para ganar la IA
+        [-] Posisiones para ganar la IA
         
-[] Interaccion entre IA y HUmano
-[] Limpiar Tablero
+[] Interaccion entre IA y Humano
+[X] Limpiar Tablero
 [] Indicar Ganador
-[] Posibilidad de continuar jugando
+[X] Posibilidad de continuar jugando
 */
+
+
+//MANUALES
+
+[] Manual tecnico
+    [] Mandar cosas que investigamos
+    ** AÑADIDOS **
+[] Manual de Uso
+    [] Descripccion de uso
