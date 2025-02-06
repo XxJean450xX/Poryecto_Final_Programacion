@@ -109,10 +109,7 @@ int turnojugador (char simbolo1,char tablero1[9]){
         //Despues de cada accion se mostrara como quedo reflejada la misma en el tablero
         tablero(tablero1);
 
-        if (tablero1[turno]=='O' || tablero1[turno]== 'X') { //Si dectecta que la casilla esta ocupada continua el bucle
-            cout << "Posicion NO valida." << endl;
-        }
-    } while (turno <= 0 || turno >= 9 && tablero1[turno]=='O' || tablero1[turno]== 'X'); //este bucle se hara hasta que el jugador ingrese un numero valido y una posicion valida
+    } while (turno <= 0 || turno >= 9 || tablero1[turno]=='O' || tablero1[turno]== 'X'); //este bucle se hara hasta que el jugador ingrese un numero valido y una posicion valida
 
     return 0;
 }
