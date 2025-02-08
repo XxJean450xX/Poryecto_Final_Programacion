@@ -115,7 +115,7 @@ int turnojugador (char simbolo1,char tablero1[9]){
 }
 
 //La funcion recorre el tablero buscando la jugada que pueda generar una victoria haciendo una simulacion, si detecta una victoria ejecutara esa jugada como la mejor posible
-bool mejormov(char tablero1[9], char simbolo1, char simbolo2, int z) {
+bool mejormov(char tablero1[9], char simbolo1, char simbolo2) {
     for (int i = 0; i < 9; i++) { //Recorrer array
 
         if (tablero1[i] == ' ') {//Verificar si esta libre la casilla
@@ -131,19 +131,72 @@ bool mejormov(char tablero1[9], char simbolo1, char simbolo2, int z) {
 }
 
 //La funcion ejecutara el turno de la computadora, permite que la jugadora detecte cuando ganar, cuando puede ganar el usuario y si no existe ninguna de esas jugadas, jugar aleatoria
-int turnocomputadora (char simbolo1, char simbolo2, char tablero1[9], int z) {
+int turnocomputadora (char simbolo1, char simbolo2, char tablero1[9]) {
 
+    srand(time(0));
     cout << "--> Respuesta de la computadora" << endl;
-    if (mejormov(tablero1, simbolo2, simbolo2, z)) { //Busca la jugada ganadora verificando si puede ganar
+    if (mejormov(tablero1, simbolo2, simbolo2)) { //Busca la jugada ganadora verificando si puede ganar
         tablero(tablero1); //Imprimimos el tablero para ver la jugada ejecutada
         return 1;
     }
-    if (mejormov(tablero1, simbolo1, simbolo2, z)) { //Busca la jugada ganadora del usuario verificando si puede ganar y completando la jugada, pero con el signo del usuario, para asi bloquearlo
+    if (mejormov(tablero1, simbolo1, simbolo2)) {
+        //Busca la jugada ganadora del usuario verificando si puede ganar y completando la jugada, pero con el signo del usuario, para asi bloquearlo
         tablero(tablero1); //Imprimimos el tablero para ver la jugada ejecutada
         return 0;
     }
+    if ((tablero1[0] == simbolo1 || tablero1[2] == simbolo1 || tablero1[6] == simbolo1 || tablero1[8] == simbolo1) && (tablero1[4] == ' ')) { //Verifica si el jugador inicio con un esquina para hacer la mejor jugada en esta apartura, la cual seria en marcar la casilla del centro
+        tablero1[4] = simbolo2; //Marcar casilla del centro
+        tablero(tablero1);
+        return 0;
+    }
+    if ((tablero1[4] == simbolo1) && (tablero1[0] == ' ' || tablero1[2] == ' ' || tablero1[6] == ' ' || tablero1[8] == ' ')) { //Verifica si el jugador inicio en el centro, para hacer las mejores jugadas por las esquinas
+        int esquina; //Variable para esquina aleatoria
+        while (tablero1[0] == ' ' || tablero1[2] == ' ' || tablero1[6] == ' ' || tablero1[8] == ' ') { //Repetira hasta que se genere una jugada valida en las esquinas
+            esquina = 1 + rand() % 4;//Esquina random
+            switch (esquina) { //Apartir de la esquina random, la esquina que corresponde
+                case 1:
+                    if (tablero1[0] == ' ') { //Verificar si esa casilla es valida
+                        tablero1[0] = simbolo2;
+                    } else {
+                        break; //Cerrar Swicth si no es valida la casilla
+                    }
 
-    srand(time(0));
+                    tablero(tablero1);
+                    return 0;
+                case 2:
+                    if (tablero1[2] == ' ') {//Verificar si esa casilla es valida
+                        tablero1[2] = simbolo2;
+                    }
+                    else {
+                        break; //Cerrar Swicth si no es valida la casilla
+                    }
+
+                    tablero(tablero1);
+                    return 0;
+                case 3:
+                    if (tablero1[6] == ' ') {//Verificar si esa casilla es valida
+                        tablero1[6] = simbolo2;
+                    }
+                    else {
+                        break; //Cerrar Swicth si no es valida la casilla
+                    }
+
+                    tablero(tablero1);
+                    return 0;
+                case 4:
+                    if (tablero1[8] == ' ') {//Verificar si esa casilla es valida
+                        tablero1[8] = simbolo2;
+                    }
+                    else {
+                        break; //Cerrar Swicth si no es valida la casilla
+                    }
+
+                    tablero(tablero1);
+                    return 0;
+            }
+        }
+    }
+
     bool colocado=false;
     while (!colocado) {
         int turno = 1 + rand() % 9;
@@ -177,7 +230,7 @@ void jugar(char tablero1[9], char simbolo1, char simbolo2, int z){
 
             case 0://COMPUTADOR
 
-                if (turnocomputadora(simbolo1, simbolo2,tablero1, z) == 1){ //Indica cuando el Computador completo el 3 en raya
+                if (turnocomputadora(simbolo1, simbolo2,tablero1) == 1){ //Indica cuando el Computador completo el 3 en raya
                     cout << "<----- PERDISTE ----->" << endl;
                     return;
                 }
@@ -200,7 +253,7 @@ int main() {
     char simbolo2='O';
 
     int k; //Ayuda a indicar si el usuario quiere seguir jugando
-    int z = 0; //Ayuda a guardar la cordenada de la posible victoria para la computadora
+    int z = 0; //Contador de cantidad de jugadas
 
     //INICIO JUEGO CON FUNCION DEL DADO
     do {
