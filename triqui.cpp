@@ -13,7 +13,7 @@ int dado() {
         int z;
         cout << "Lance el dado escribiendo el numero 1: ";
         cin >> z;
-    while(z!=1) {
+    while(z!=1) { //Evitar que ponga otro caracter o numero
         cout << "Lance el dado escribiendo el numero 1! no otro caracter: ";
         cin >> z;
         if(z==1) {
