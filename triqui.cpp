@@ -13,6 +13,14 @@ int dado() {
         int z;
         cout << "Lance el dado escribiendo el numero 1: ";
         cin >> z;
+    while(z!=1) {
+        cout << "Lance el dado escribiendo el numero 1! no otro caracter: ";
+        cin >> z;
+        if(z==1) {
+            break;
+        }
+    }
+
         cout << endl;
         cout << "<---------------RESULTADOS---------------->" << endl;
         cout << endl;
